@@ -1,0 +1,11 @@
+    * {
+        box-sizing: border-box;
+        border: 1px grey dotted;
+    }
+
+    #drum-machine {
+        display: block;
+        height: 100vh;
+        width: 100vw;
+        
+    }
