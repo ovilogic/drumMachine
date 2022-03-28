@@ -15,16 +15,16 @@
         border: black inset 3px;
         padding: 2%;
 
-
-        
     }
 
     .drum-pad {
         text-align: center;
         background-color: rgb(150, 110, 190);
         border: 3px inset black;
+        border-radius: 13px;
     }
 
     .clip {
+
         display: none;
     }

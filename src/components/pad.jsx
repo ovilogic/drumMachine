@@ -63,14 +63,36 @@ const Pad = () => {
         }
             
         ]
+
         
+        
+        useEffect(() => {
+        document.addEventListener('keypress', (event) => {
+            
+            var name = event.key;
+            
+            if (name == 'a') {
+               const keyObj = keys.filter(x => x.press =='A')
+            
+               let keyA = new Audio(keyObj[0].src)
+               console.log('played')
+               keyA.play()
+                
+            }
+    }, false);
+        });
+    
+
+
+
     
     let keyboard = () => keys.map(item => 
         
-        <div key={item.press} className='drum-pad' onClick={() => {item.ref.current.play()}}> {item.press}
+
+        <div key={item.press} className='drum-pad' onClick={() => {item.ref.current.play()}}
+        > {item.press}
                 <audio ref={item.ref} >
                     <source  className='clip' src={item.src} >
-
                     </source>
                 </audio>
         </div>
