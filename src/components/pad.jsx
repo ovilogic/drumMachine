@@ -64,23 +64,27 @@ const Pad = () => {
             
         ]
 
-        
-        
+        let keysArr = [];
+        for (let i = 0; i < keys.length; i++) {
+            let x = keys[i].press
+            keysArr.push(x.toLowerCase())
+        }
+        console.log(keysArr)
+
         useEffect(() => {
-        document.addEventListener('keypress', (event) => {
-            
-            var name = event.key;
-            
-            if (name == 'a') {
-               const keyObj = keys.filter(x => x.press =='A')
-            
-               let keyA = new Audio(keyObj[0].src)
-               console.log('played')
-               keyA.play()
-                
+            document.addEventListener('keypress', (event) => {
+                var name = event.key;
+                for (let i = 0; i < keysArr.length; i++) {
+                    if (name == keysArr[i]) {
+                        const keyObj = keys.filter(x => x.press == keysArr[i].toUpperCase())
+                        let keyA = new Audio(keyObj[0].src)
+                        console.log('played')
+                        keyA.play()
+                    }
             }
-    }, false);
-        });
+            }, false);
+            }
+        );
     
 
 
