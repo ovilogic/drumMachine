@@ -25,4 +25,6 @@
         border: 3px inset black;
     }
 
- 
+    .clip {
+        display: none;
+    }
