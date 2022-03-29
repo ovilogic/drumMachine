@@ -5,7 +5,7 @@ import './style/app.css'
 
 function App() {
   return (
-    <>
+    
     <div id='drum-machine'>
       Drum machine
       <div id='display'>
@@ -13,9 +13,8 @@ function App() {
       </div>
       
     </div>
-    <script src='https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js'>
-    </script>
-    </>
+    
+    
     
   );
 }

@@ -60,8 +60,7 @@ const Pad = () => {
             press: 'C',
             ref: c,
             src: 'https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3'
-        }
-            
+        } 
         ]
 
         let keysArr = [];
@@ -69,7 +68,7 @@ const Pad = () => {
             let x = keys[i].press
             keysArr.push(x.toLowerCase())
         }
-        console.log(keysArr)
+
 
         useEffect(() => {
             document.addEventListener('keypress', (event) => {
@@ -87,13 +86,12 @@ const Pad = () => {
         );
     
 
-
-
-    
     let keyboard = () => keys.map(item => 
-        
-
-        <div key={item.press} className='drum-pad' onClick={() => {item.ref.current.play()}}
+        <div key={item.press} className='drum-pad' onClick={(e) => {
+            item.ref.current.play();
+            console.log(e.target);
+        }
+        }
         > {item.press}
                 <audio ref={item.ref} >
                     <source  className='clip' src={item.src} >
@@ -103,10 +101,25 @@ const Pad = () => {
     
     )
 
-    return ( 
-        <div className='board'>
-            {keyboard()}
+    return (
+        <div className='motherboard'> 
+            <div className='board'>
+                {keyboard()}
 
+            </div>
+            <div className='switches'>
+       
+                    <label className='switch'>
+                        <input type='checkbox' />
+                        <strong>Power</strong>
+                        <span className='slider'></span>
+                    </label>
+                
+                    
+                    
+        
+
+            </div>
         </div>
      );
 }

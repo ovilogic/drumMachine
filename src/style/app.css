@@ -4,11 +4,22 @@
     }
 
     #drum-machine {
-        display: block;
-        
-        height: 100vh;
-        width: 100vw;
+        position: relative; 
+        height: 100%;
+        width: 100%;
         background-color: antiquewhite;
+
+    }
+
+    body {
+        background-color: antiquewhite;
+        height: 90vh;
+        width: 100%;
+    }
+
+    html, body {
+        margin: 0;
+        padding: 0;
         
     }
 
