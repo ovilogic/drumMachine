@@ -1,15 +1,19 @@
+import { useState } from "react";
 import Pad from "./components/pad";
 import './style/app.css'
 
 
 
 function App() {
+ const [on, setOn] = useState(true)
+
+
   return (
     
     <div id='drum-machine'>
-      Drum machine
+      
       <div id='display'>
-        <Pad />
+        <Pad power={on}/>
       </div>
       
     </div>

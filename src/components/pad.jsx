@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import '../style/pad.css'
 
 
-const Pad = () => {
+const Pad = (props) => {
 
     const q = useRef()
     const w = useRef()
@@ -63,43 +63,52 @@ const Pad = () => {
         } 
         ]
 
-        let keysArr = [];
-        for (let i = 0; i < keys.length; i++) {
-            let x = keys[i].press
-            keysArr.push(x.toLowerCase())
-        }
+      
 
 
-        useEffect(() => {
-            document.addEventListener('keypress', (event) => {
-                var name = event.key;
-                for (let i = 0; i < keysArr.length; i++) {
-                    if (name == keysArr[i]) {
-                        const keyObj = keys.filter(x => x.press == keysArr[i].toUpperCase())
-                        let keyA = new Audio(keyObj[0].src)
-                        console.log('played')
-                        keyA.play()
-                    }
+
+    
+    const [toggle, setToggle] = useState(props.power)
+
+   
+    console.log(toggle)
+       
+    let keysArr = [];
+    for (let i = 0; i < keys.length; i++) {
+        let x = keys[i].press
+        keysArr.push(x.toUpperCase())
+    }   
+    
+    document.addEventListener('keypress', (event) => {
+        
+        var name = event.key;
+     
+        
+        for (let i = 0; i < keysArr.length; i++) {
+            
+            if (name.toUpperCase() == keysArr[i]) {
+                let keysObj = keys.filter(item => item.press == name.toUpperCase())
+                console.log('ref is ', keysObj[0].ref)
+                keysObj[0].ref.current.play()
+
             }
-            }, false);
-            }
-        );
+    }
+    }, false);
+        
+        
     
 
     let keyboard = () => keys.map(item => 
-        <div key={item.press} className='drum-pad' onClick={(e) => {
-            item.ref.current.play();
-            console.log(e.target);
-        }
-        }
-        > {item.press}
-                <audio ref={item.ref} >
-                    <source  className='clip' src={item.src} >
-                    </source>
-                </audio>
+        <div key={item.press} id={item.press} className='drum-pad' onClick={(e) => {
+            if (toggle == true) {
+                item.ref.current.play()}}}> 
+            <h1>{item.press}</h1>
+            <audio id={item.press} ref={item.ref} className='clip' src={item.src} ></audio>
         </div>
     
     )
+
+   
 
     return (
         <div className='motherboard'> 
@@ -108,12 +117,14 @@ const Pad = () => {
 
             </div>
             <div className='switches'>
-       
-                    <label className='switch'>
-                        <input type='checkbox' />
-                        <strong>Power</strong>
-                        <span className='slider'></span>
-                    </label>
+                    <div className='power'>
+                        <h4>Power</h4> 
+                        <label className='switch' onClick={() => setToggle(!toggle)}>
+                            <input type='checkbox' />
+                            
+                            <span className='slider'></span>
+                        </label>
+                    </div>
                 
                     
                     

@@ -1,6 +1,6 @@
     * {
         box-sizing: border-box;
-        border: 1px grey dotted;
+        /* qborder: 1px grey dotted; */
     }
 
     #drum-machine {
@@ -15,6 +15,10 @@
         background-color: antiquewhite;
         height: 90vh;
         width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
     }
 
     html, body {
