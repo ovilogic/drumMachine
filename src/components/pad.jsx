@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import '../style/pad.css'
 
 
-const Pad = (props) => {
+const Pad = ({ power, handlePower }) => {
 
     const q = useRef()
     const w = useRef()
@@ -63,15 +63,12 @@ const Pad = (props) => {
         } 
         ]
 
-      
 
-
-
-    
-    const [toggle, setToggle] = useState(props.power)
-
-   
-    console.log(toggle)
+    const handlePlay = (ref) => {
+        if (power == true) {
+            ref.current.play()}        
+    }
+            
        
     let keysArr = [];
     for (let i = 0; i < keys.length; i++) {
@@ -87,21 +84,23 @@ const Pad = (props) => {
         for (let i = 0; i < keysArr.length; i++) {
             
             if (name.toUpperCase() == keysArr[i]) {
-                let keysObj = keys.filter(item => item.press == name.toUpperCase())
-                console.log('ref is ', keysObj[0].ref)
-                keysObj[0].ref.current.play()
-
+                let keysObj = keys.map(item => {
+                    if (item.press == name.toUpperCase()) {
+                        handlePlay(item.ref)
+                        
+                    }
+                }
+                )
             }
     }
     }, false);
-        
+
+    
         
     
 
     let keyboard = () => keys.map(item => 
-        <div key={item.press} id={item.press} className='drum-pad' onClick={(e) => {
-            if (toggle == true) {
-                item.ref.current.play()}}}> 
+        <div key={item.press} id={item.press} className='drum-pad' onClick={() => handlePlay(item.ref)}> 
             <h1>{item.press}</h1>
             <audio id={item.press} ref={item.ref} className='clip' src={item.src} ></audio>
         </div>
@@ -119,7 +118,7 @@ const Pad = (props) => {
             <div className='switches'>
                     <div className='power'>
                         <h4>Power</h4> 
-                        <label className='switch' onClick={() => setToggle(!toggle)}>
+                        <label className='switch' onChange={() => handlePower()}>
                             <input type='checkbox' />
                             
                             <span className='slider'></span>
