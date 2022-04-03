@@ -26,6 +26,7 @@ function App() {
         press: 'W',
         ref: w,
         src: 'https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3'
+      
     },
     {
         press: 'E',
@@ -64,15 +65,19 @@ function App() {
     } 
     ]
 
+    // console.log(keys[8].src.slice(-10, -4))
 
 
-const [padKey, setPadKey] = useState({color: 'aqua'})
+
+const padKey = {color: 'aqua'}
+const [info, setInfo] = useState('')
 
 
 const [on, setOn] = useState(true)
 
 const handlePower = () => {
   setOn(!on)
+  setInfo('')
 }
 
 const handlePlay = (ref) => {
@@ -81,12 +86,17 @@ const handlePlay = (ref) => {
       ref.current.parentElement.style.boxShadow = 'none';
       ref.current.parentElement.style.color = 'rgb(50, 50 , 50';
       setTimeout(() => {
-        ref.current.parentElement.style.boxShadow = 'cyan 3px 0px 5px';
+        ref.current.parentElement.style.boxShadow = 'cyan 0px 0px 10px';
         ref.current.parentElement.style.color = 'aqua'
       }, 100)
-    
 
-    console.log(ref.current.parentElement.style)       
+      let parsedSrc = ref.current.src.split('/')
+      let infoSrc = [...parsedSrc].pop().split('.').shift()
+      if (on) {
+        setInfo(infoSrc);
+      }
+      
+    
 }
 
 
@@ -111,8 +121,10 @@ useEffect(() => {
     <div id='drum-machine'>
       
       <div id='display'>
-        <Pad handlePower={handlePower} handlePlay={handlePlay} keys={keys}
-        padKey={padKey} />
+        <Pad handlePower={handlePower} handlePlay={handlePlay}
+        keys={keys}
+        padKey={padKey}
+        info={info} />
       </div>
       
     </div>

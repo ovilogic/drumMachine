@@ -51,25 +51,12 @@
         background-color: rgb(150, 110, 190);
         border: 3px inset black;
         border-radius: 13px;
-        box-shadow: cyan 3px 0px 5px;
+        box-shadow: cyan 0px 0px 10px;
     }
 
     .drum-pad:active {
       box-shadow: none;
     }
-
-    .no-shadow {
-      text-align: center;
-        background-color: rgb(150, 110, 190);
-        border: 3px inset black;
-        border-radius: 13px;
-    }
-
-    .active {
-      box-shadow: none;
-    }
-
-
 
     .drum-pad h1 {
         display: block;
@@ -121,7 +108,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: rgb(101, 238, 243);
+        background-color: aqua;
         -webkit-transition: .4s;
         transition: .4s;
       }
@@ -133,7 +120,7 @@
         width: 16px;
         right: 2px;
         bottom: 1px;
-        background-color: silver;
+        background-color: rgb(50, 50, 50);
         -webkit-transition: .4s;
         transition: .4s;
       }
@@ -155,5 +142,22 @@
   .power label {
     border: 1px solid silver;
   }
-      
-      
+
+  .display {
+    display: block;
+    width: 80%;
+    height: 30px;
+    background-color: rgb(127, 230, 230);
+    margin-top: 10px;
+    border: 5px inset black;
+    
+
+  }
+
+  .display h4 {
+    display: block;
+    margin: auto;
+    position: relative;
+    top: 1px;
+    text-align: center;
+  }
