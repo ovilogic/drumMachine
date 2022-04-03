@@ -66,6 +66,9 @@ function App() {
 
 
 
+const [padKey, setPadKey] = useState({color: 'aqua'})
+
+
 const [on, setOn] = useState(true)
 
 const handlePower = () => {
@@ -74,22 +77,33 @@ const handlePower = () => {
 
 const handlePlay = (ref) => {
   if (on == true) {
-      console.log('in handlePlay   ', ref.current)
-      ref.current.play()}        
-}
-console.log(on)
+      ref.current.play()};
+      ref.current.parentElement.style.boxShadow = 'none';
+      ref.current.parentElement.style.color = 'rgb(50, 50 , 50';
+      setTimeout(() => {
+        ref.current.parentElement.style.boxShadow = 'cyan 3px 0px 5px';
+        ref.current.parentElement.style.color = 'aqua'
+      }, 100)
+    
 
+    console.log(ref.current.parentElement.style)       
+}
+
+
+const onKeyPress = (event) => {
+  let key = keys.filter(k => event.key.toUpperCase() == k.press );
+    handlePlay(key[0].ref);
+   
+    
+}
 
 useEffect(() => {
-  document.addEventListener('keypress', (event) => {
-    let key = keys.filter(k => event.key.toUpperCase() == k.press );
-    console.log(key[0], 'in doc event listener')
-    console.log('in eventLIstener  ', on)
-    
-    handlePlay(key[0].ref)
-  })
+  window.addEventListener('keypress', onKeyPress);
   
+  return () => { window.removeEventListener('keypress', onKeyPress)}
 }, [on])
+
+
 
 
   return (
@@ -97,7 +111,8 @@ useEffect(() => {
     <div id='drum-machine'>
       
       <div id='display'>
-        <Pad handlePower={handlePower} handlePlay={handlePlay} keys={keys} />
+        <Pad handlePower={handlePower} handlePlay={handlePlay} keys={keys}
+        padKey={padKey} />
       </div>
       
     </div>

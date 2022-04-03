@@ -3,17 +3,22 @@ import React, { useState, useEffect, useRef } from 'react';
 import '../style/pad.css'
 
 
-const Pad = ({ keys, handlePower, handlePlay }) => {
+const Pad = ({ keys, handlePower, handlePlay, padKey }) => {
 
   
 
     let keyboard = () => keys.map(item => 
         <div key={item.press} id={item.press} className='drum-pad'
-         onClick={() => handlePlay(item.ref)}> 
+         onClick={() => handlePlay(item.ref)}
+         onKeyDown={() => {
+             padKey = { color: 'blue'
+               }
+               console.log(padKey)
+         }}
+         style={padKey}> 
             <h1>{item.press}</h1>
             <audio id={item.press} ref={item.ref} className='clip' src={item.src} ></audio>
         </div>
-    
     )
 
     return (
