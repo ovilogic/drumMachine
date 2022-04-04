@@ -65,13 +65,18 @@ function App() {
     } 
     ]
 
-    // console.log(keys[8].src.slice(-10, -4))
-
 
 
 const padKey = {color: 'aqua'}
 const [info, setInfo] = useState('')
 
+const [vol, setVol] = useState(59)
+
+console.log('volume is', vol)
+    
+const handleVol = (event) => {
+    setVol(event.target.value);
+}
 
 const [on, setOn] = useState(true)
 
@@ -80,11 +85,18 @@ const handlePower = () => {
   setInfo('')
 }
 
+
+
 const handlePlay = (ref) => {
+
   if (on == true) {
+    ref.current.volume = vol / 100
+      
+      console.log(ref.current)
+
       ref.current.play()};
       ref.current.parentElement.style.boxShadow = 'none';
-      ref.current.parentElement.style.color = 'rgb(50, 50 , 50';
+      ref.current.parentElement.style.color = 'rgb(50, 50 , 50)';
       setTimeout(() => {
         ref.current.parentElement.style.boxShadow = 'cyan 0px 0px 10px';
         ref.current.parentElement.style.color = 'aqua'
@@ -102,6 +114,7 @@ const handlePlay = (ref) => {
 
 const onKeyPress = (event) => {
   let key = keys.filter(k => event.key.toUpperCase() == k.press );
+    
     handlePlay(key[0].ref);
    
     
@@ -111,7 +124,7 @@ useEffect(() => {
   window.addEventListener('keypress', onKeyPress);
   
   return () => { window.removeEventListener('keypress', onKeyPress)}
-}, [on])
+}, [on, vol])
 
 
 
@@ -124,7 +137,10 @@ useEffect(() => {
         <Pad handlePower={handlePower} handlePlay={handlePlay}
         keys={keys}
         padKey={padKey}
-        info={info} />
+        info={info}
+        vol={vol}
+        handleVol={handleVol}
+        />
       </div>
       
     </div>

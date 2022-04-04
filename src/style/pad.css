@@ -1,74 +1,78 @@
-    * {
-        box-sizing: border-box;
-        /* border: 1px grey dotted; */
-    }
+  * {
+      box-sizing: border-box;
+      /* border: 1px grey dotted; */
+  }
 
-    .motherboard {
-        display: flex;
-        flex-direction: row;
-        width: 800px;
-        height: 500px;
-        border: 10px coral solid;
-        margin-top: 40px;
-    }
+  .motherboard {
+      display: flex;
+      flex-direction: row;
+      width: 800px;
+      height: 500px;
+      border: 10px rgb(25, 90, 99) solid;
+      margin-top: 40px;
+  }
 
-    @media (max-width: 799px) {
-        .motherboard {
-            flex-direction: column;
-            width: 400px;
-            height: 550px;
-        }
+  @media (max-width: 799px) {
+      .motherboard {
+          flex-direction: column;
+          width: 400px;
+          height: 550px;
+      }
 
-     
-
-        .drum-pad {
-            width: 100px;
-            height: 80px;
-        }
-
-        .drum-pad h1 {
-            position: relative;
-            font-size: medium;
-        }
-
-      
-    }
     
-    .board {        
-        display: grid;
-        height: 100%;
-        width: 100%;
 
-        grid-template-columns: auto auto auto;
-        grid-template-rows: auto auto auto;
-        gap: 3%;
-        background-color: rgb(50, 50, 50);
-        padding: 15px;  
-    }
+      .drum-pad {
+          width: 100px;
+          height: 80px;
+      }
 
-    .drum-pad {
-        text-align: center;
-        background-color: rgb(150, 110, 190);
-        border: 3px inset black;
-        border-radius: 13px;
-        box-shadow: cyan 0px 0px 10px;
-    }
+      .drum-pad h1 {
+          position: relative;
+          font-size: medium;
+      }
 
-    .drum-pad:active {
-      box-shadow: none;
-    }
+    
+  }
+  
+  .board {        
+      display: grid;
+      height: 100%;
+      width: 100%;
 
-    .drum-pad h1 {
-        display: block;
-        position: relative;
-        top: 25%;
-    }
+      grid-template-columns: auto auto auto;
+      grid-template-rows: auto auto auto;
+      gap: 3%;
+      background-color: rgb(50, 50, 50);
+      padding: 15px;  
+  }
 
-    .clip {
-        display: none;
-    }
+  .drum-pad {
+      text-align: center;
+      background-color: rgb(150, 110, 190);
+      border: 3px inset black;
+      border-radius: 13px;
+      box-shadow: cyan 0px 0px 10px;
+  }
 
-    .switches {       
+  .drum-pad:active {
+    box-shadow: none;
+  }
+
+  .drum-pad h1 {
+      display: block;
+      position: relative;
+      top: 25%;
+  }
+
+  .clip {
+      display: none;
+  }
+
+
+
+
+    .switches {    
+        
         width: 100%;
         height: 100%;
         background-color: rgb(50, 50, 50);
@@ -148,7 +152,7 @@
     width: 80%;
     height: 30px;
     background-color: rgb(127, 230, 230);
-    margin-top: 10px;
+    margin-top: 30px;
     border: 5px inset black;
     
 
@@ -161,3 +165,16 @@
     top: 1px;
     text-align: center;
   }
+
+  .vol {
+    display: block;
+    position: relative;
+    width: 80%;
+    margin-top: 30px;
+  }
+
+  .vol #myRange {
+    width: 100%;
+    margin-left: -0.3px;
+  }
+
